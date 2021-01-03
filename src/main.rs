@@ -73,4 +73,28 @@ fn main() {
     //     s.len()
     // } // Here, s goes out of scope. But because it does not have ownership of what
     //   // it refers to, nothing happens.
+
+    // tuple structs
+    // these two structs are different types, despite both being tuple structs -- Coords & ArbitraryValues. Even though they are both made up of two i32 values, fn some_fn(arg: Coords) {..} could not take ArbitraryValues as an argument
+    struct Coords(f64, f64);
+    struct ArbitraryValues(f64, f64);
+    let nh = Coords(42.8, -70.0);
+    let some_data = ArbitraryValues(120.1, 42.0);
+    // dot syntax is valid for tuple structs
+    println!("{}", nh.0);
+
+    main_2();
+}
+
+fn main_2() {
+    let width1: u32 = 30;
+    let height1: u32 = 50;
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        area(width1, height1)
+    );
+    fn area(width: u32, height: u32) -> u32 {
+        width * height
+    };
 }
