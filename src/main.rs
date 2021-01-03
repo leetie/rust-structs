@@ -59,4 +59,18 @@ fn main() {
         "Now user 1's username is {}, and user 4's username is {}",
         user_1.username, user_4.username
     );
+
+    let heap_string = String::from("heap string");
+    let heap_string_2 = &heap_string; // copies the existing pointer here, but heap_string retains ownership. when this reference is out of scope, the pointer is not dropped
+
+    println!("{}", heap_string);
+    // line below will not compile because heap_string_2 is borrowing the data in heap_string
+    //heap_string = String::from("will not work");
+    println!("{}", heap_string_2);
+
+    // FROM BOOK https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
+    //     fn calculate_length(s: &String) -> usize { // s is a reference to a String
+    //     s.len()
+    // } // Here, s goes out of scope. But because it does not have ownership of what
+    //   // it refers to, nothing happens.
 }
