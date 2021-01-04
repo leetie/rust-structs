@@ -1,3 +1,5 @@
+mod area;
+
 fn main() {
     struct User {
         username: String,
@@ -83,18 +85,38 @@ fn main() {
     // dot syntax is valid for tuple structs
     println!("{}", nh.0);
 
-    main_2();
-}
-
-fn main_2() {
-    let width1: u32 = 30;
-    let height1: u32 = 50;
-
-    println!(
-        "The area of the rectangle is {} square pixels.",
-        area(width1, height1)
-    );
-    fn area(width: u32, height: u32) -> u32 {
-        width * height
+    let rect1 = area::Rectangle {
+        width: 30,
+        height: 50,
     };
+    println!("The area of rect1 = {}", area::area(&rect1));
 }
+
+// fn main_2() {
+//     // Data below is related, let's use a tuple instead!
+//     // let width1: u32 = 30;
+//     // let height1: u32 = 50;
+//     // let rect1 = (30, 50);
+//     let rect1 = Rectangle {
+//         width: 30,
+//         height: 50,
+//     };
+
+//     println!(
+//         "The area of the rectangle is {} square pixels.",
+//         area(&rect1)
+//     );
+//     // area fn using tuple syntax. can be improved using structs for code clarity
+//     // fn area(dimensions: (u32, u32)) -> u32 {
+//     //     dimensions.0 * dimensions.1
+//     // };
+
+//     // area fn using struct parameter. use reference as to not take ownership
+//     fn area(rectangle: &Rectangle) -> u32 {
+//         rectangle.width * rectangle.height
+//     }
+//     struct Rectangle {
+//         width: u32,
+//         height: u32,
+//     };
+// }
