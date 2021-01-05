@@ -89,7 +89,8 @@ fn main() {
         width: 30,
         height: 50,
     };
-    println!("The area of rect1 = {}", area::area(&rect1));
+    println!("The area of rect1 = {}", rect1.area());
+    println!("rect1 is {:#?}", rect1);
 }
 
 // fn main_2() {
